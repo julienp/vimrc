@@ -29,9 +29,7 @@ Bundle 'ervandew/supertab'
 Bundle 'vim-scripts/tComment'
 Bundle 'YankRing.vim'
 Bundle 'ragtag.vim'
-Bundle 'gitignore'
 Bundle 'matchit.zip'
-
 
 filetype on
 filetype plugin indent on
@@ -117,9 +115,6 @@ let g:SuperTabDefaultCompletionType = "context"
 runtime! ftplugin/man.vim
 nmap K :Man <cword><CR>
 
-"autotag
-" source ~/.vim/bundle/autotag/autotag.vim
-
 "jshint
 let g:jshint = 1
 
@@ -141,6 +136,9 @@ function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 au Filetype qf setlocal nolist nocursorline nowrap
+
+"yankring
+let g:yankring_history_dir = '/tmp'
 
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
@@ -193,10 +191,6 @@ function! SearchDash()
   execute s:cmd
   redraw!
 endfunction
-
-"
-"yankring
-let g:yankring_history_dir = '/tmp'
 
 let mapleader = ","
 nnoremap <leader>b :CtrlPBuffer<CR>

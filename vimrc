@@ -30,6 +30,7 @@ Bundle 'vim-scripts/tComment'
 Bundle 'YankRing.vim'
 Bundle 'ragtag.vim'
 Bundle 'matchit.zip'
+Bundle 'othree/html5.vim'
 
 filetype on
 filetype plugin indent on

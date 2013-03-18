@@ -31,6 +31,7 @@ Bundle 'YankRing.vim'
 Bundle 'ragtag.vim'
 Bundle 'matchit.zip'
 Bundle 'othree/html5.vim'
+Bundle 'webgefrickel/typoscript-vim'
 
 filetype on
 filetype plugin indent on
@@ -99,6 +100,9 @@ let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchain
 autocmd Filetype objc,c,objcpp call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 autocmd BufWritePost *.c,*.m,*.h call g:ClangUpdateQuickFix()
 autocmd BufRead,BufNewFile *.m set filetype=objc
+
+"typoscript
+autocmd BufNewFile,BufRead *.t3s setlocal filetype=typoscript
 
 "objc
 "https://github.com/b4winckler/vim-objc/blob/master/ftplugin/objc.vim

@@ -32,6 +32,7 @@ Bundle 'ragtag.vim'
 Bundle 'matchit.zip'
 Bundle 'othree/html5.vim'
 Bundle 'webgefrickel/typoscript-vim'
+Bundle 'hail2u/vim-css3-syntax'
 
 filetype on
 filetype plugin indent on

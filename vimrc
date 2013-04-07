@@ -36,7 +36,7 @@ Bundle 'honza/vim-snippets'
 Bundle 'garbas/vim-snipmate'
 Bundle 'vim-snipmate.git'
 Bundle 'hail2u/vim-css3-syntax'
-Bundle 'skammer/vim-css-color'
+Bundle 'ap/vim-css-color.git'
 
 filetype on
 filetype plugin indent on

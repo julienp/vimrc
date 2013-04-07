@@ -30,13 +30,13 @@ Bundle 'vim-scripts/tComment'
 Bundle 'YankRing.vim'
 Bundle 'ragtag.vim'
 Bundle 'matchit.zip'
-Bundle 'Better-CSS-Syntax-for-Vim'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "honza/vim-snippets"
-Bundle "garbas/vim-snipmate"
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/vim-snippets'
+Bundle 'garbas/vim-snipmate'
 Bundle 'vim-snipmate.git'
-Bundle 'git://github.com/chrisbra/color_highlight.git'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'skammer/vim-css-color'
 
 filetype on
 filetype plugin indent on

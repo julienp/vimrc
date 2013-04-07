@@ -19,7 +19,6 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-repeat'
 Bundle 'Match-Bracket-for-Objective-C'
 Bundle 'edsono/vim-matchit'
-Bundle 'gregsexton/MatchTag'
 Bundle 'klen/python-mode'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
@@ -29,14 +28,12 @@ Bundle 'ervandew/supertab'
 Bundle 'vim-scripts/tComment'
 Bundle 'YankRing.vim'
 Bundle 'ragtag.vim'
-Bundle 'matchit.zip'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'honza/vim-snippets'
 Bundle 'garbas/vim-snipmate'
 Bundle 'vim-snipmate.git'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'ap/vim-css-color.git'
+Bundle 'css3'
 
 filetype on
 filetype plugin indent on
@@ -96,6 +93,9 @@ set completeopt=longest,menu
 set pumheight=15 "limit completion menu height
 setlocal omnifunc=syntaxcomplete#Complete
 
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
+
 "clang
 let g:clang_use_library=1
 let g:clang_complete_copen=1
@@ -114,11 +114,6 @@ autocmd Filetype objc,objcpp setlocal includeexpr=substitute(v:fname,'\\([^/]\\+
 "python
 let g:pymode_lint_ignore = "E128,E122,E261,E501"
 let g:pymode_lint_signs = 0
-
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
-
-let g:colorizer_auto_filetype='css,html'
 
 "awesome manpages
 "see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude

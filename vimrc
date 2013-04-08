@@ -19,7 +19,6 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-repeat'
 Bundle 'Match-Bracket-for-Objective-C'
 Bundle 'edsono/vim-matchit'
-Bundle 'klen/python-mode'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'altercation/vim-colors-solarized'
@@ -114,6 +113,7 @@ autocmd Filetype objc,objcpp setlocal includeexpr=substitute(v:fname,'\\([^/]\\+
 "python
 let g:pymode_lint_ignore = "E128,E122,E261,E501"
 let g:pymode_lint_signs = 0
+
 
 "awesome manpages
 "see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude

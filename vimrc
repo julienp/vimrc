@@ -6,20 +6,19 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'git://github.com/mileszs/ack.vim.git'
-Bundle 'git://github.com/kien/ctrlp.vim.git'
+Bundle 'ack.vim'
+Bundle 'ctrlp.vim'
 Bundle 'Rip-Rip/clang_complete'
 Bundle 'AutoTag'
 Bundle 'a.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'knatten/vim_django'
-Bundle 'git://github.com/othree/jslint.vim.git'
+Bundle 'jslint.vim'
 Bundle 'nelstrom/vim-markdown-folding'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-repeat'
 Bundle 'Match-Bracket-for-Objective-C'
 Bundle 'edsono/vim-matchit'
-Bundle 'gregsexton/MatchTag'
 Bundle 'klen/python-mode'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
@@ -29,10 +28,12 @@ Bundle 'ervandew/supertab'
 Bundle 'vim-scripts/tComment'
 Bundle 'YankRing.vim'
 Bundle 'ragtag.vim'
-Bundle 'matchit.zip'
-Bundle 'othree/html5.vim'
-Bundle 'webgefrickel/typoscript-vim'
-Bundle 'hail2u/vim-css3-syntax'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/vim-snippets'
+Bundle 'garbas/vim-snipmate'
+Bundle 'vim-snipmate.git'
+Bundle 'css3'
 
 filetype on
 filetype plugin indent on
@@ -51,7 +52,6 @@ set undofile "persistent undo
 set undodir=/tmp
 set history=100 "keep 100 lines of history
 set viminfo='10,:20,\"100,n~/.viminfo
-set timeout timeoutlen=1000 ttimeoutlen=100 "http://ksjoberg.com/vim-esckeys.html"
 "restore cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -60,8 +60,8 @@ set laststatus=2 "alwasy show status line
 set statusline=%<%f\ %h%m%r%y%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set listchars=tab:▸\ ,eol:¬ "invisible chars
 set nolist "dont show invisible chars by default
-set noerrorbells "dont beep!
-set novisualbell
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 set showcmd "show command in the last line of the screen
 set wrap linebreak
 set showbreak=↪\  "show at the beginning of wrapped lines
@@ -91,6 +91,10 @@ set wildignore=*.o,.DS_STORE,*.obj,*.pyc,*.class,_build,*.aux,*.bbl,*.blg,*/.git
 set wildmode=full
 set completeopt=longest,menu
 set pumheight=15 "limit completion menu height
+setlocal omnifunc=syntaxcomplete#Complete
+
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 
 "clang
 let g:clang_use_library=1
@@ -114,8 +118,6 @@ autocmd Filetype objc,objcpp setlocal includeexpr=substitute(v:fname,'\\([^/]\\+
 let g:pymode_lint_ignore = "E128,E122,E261,E501"
 let g:pymode_lint_signs = 0
 
-let g:SuperTabDefaultCompletionType = "context"
-
 "awesome manpages
 "see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude
 runtime! ftplugin/man.vim
@@ -126,7 +128,7 @@ let g:jshint = 1
 
 "ctrlp
 let g:ctrlp_map = '<leader>t'
-let g:ctrlp_max_depth = 10
+let g:ctrlp_max_depth = 5
 let g:ctrlp_show_hidden = 1
 
 "a.vim

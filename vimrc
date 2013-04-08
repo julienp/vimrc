@@ -34,6 +34,7 @@ Bundle 'honza/vim-snippets'
 Bundle 'garbas/vim-snipmate'
 Bundle 'vim-snipmate.git'
 Bundle 'css3'
+Bundle 'webgefrickel/typoscript-vim'
 
 filetype on
 filetype plugin indent on

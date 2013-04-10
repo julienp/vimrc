@@ -91,8 +91,9 @@ set wildignore=*.o,.DS_STORE,*.obj,*.pyc,*.class,_build,*.aux,*.bbl,*.blg,*/.git
 set wildmode=full
 set completeopt=longest,menu
 set pumheight=15 "limit completion menu height
-setlocal omnifunc=syntaxcomplete#Complete
 
+set omnifunc=syntaxcomplete#Complete
+let g:SuperTabContextTextFileTypeExclusions = ['typoscript']
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 

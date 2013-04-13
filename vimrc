@@ -233,9 +233,9 @@ nnoremap <leader>d :call SearchDash()<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 set background=light
-colorscheme solarized
 
 if has('gui_running')
+    colorscheme solarized
     " set guifont=Menlo\ Regular:h12
     " set guifont=Inconsolata-dz:h12
     " set guifont=Inconsolata\ for\ Powerline:h14

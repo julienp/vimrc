@@ -108,7 +108,7 @@ autocmd BufWritePost *.c,*.m,*.h call g:ClangUpdateQuickFix()
 autocmd BufRead,BufNewFile *.m set filetype=objc
 
 "typoscript
-autocmd BufNewFile,BufRead *.t3s setlocal filetype=typoscript
+autocmd BufNewFile,BufRead *.t3s,*.ts setlocal filetype=typoscript
 
 "objc
 "https://github.com/b4winckler/vim-objc/blob/master/ftplugin/objc.vim

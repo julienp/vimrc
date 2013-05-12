@@ -13,7 +13,6 @@ Bundle 'AutoTag'
 Bundle 'a.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'knatten/vim_django'
-Bundle 'jslint.vim'
 Bundle 'nelstrom/vim-markdown-folding'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-repeat'
@@ -119,9 +118,6 @@ autocmd Filetype objc,objcpp setlocal includeexpr=substitute(v:fname,'\\([^/]\\+
 "see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude
 runtime! ftplugin/man.vim
 nmap K :Man <cword><CR>
-
-"jshint
-let g:jshint = 1
 
 "ctrlp
 let g:ctrlp_map = '<leader>t'

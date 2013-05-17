@@ -114,11 +114,6 @@ autocmd BufNewFile,BufRead *.t3s,*.ts setlocal filetype=typoscript
 "Search for include files inside frameworks (used for gf etc.)
 autocmd Filetype objc,objcpp setlocal includeexpr=substitute(v:fname,'\\([^/]\\+\\)/\\(.\\+\\)','/System/Library/Frameworks/\\1.framework/Headers/\\2','')
 
-"awesome manpages
-"see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude
-runtime! ftplugin/man.vim
-nmap K :Man <cword><CR>
-
 "ctrlp
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_max_depth = 5

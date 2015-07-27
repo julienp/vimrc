@@ -2,40 +2,41 @@ set nocompatible " Use Vim defaults
 
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'ack.vim'
-Bundle 'ctrlp.vim'
-Bundle 'Rip-Rip/clang_complete'
-Bundle 'AutoTag'
-Bundle 'a.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'knatten/vim_django'
-Bundle 'nelstrom/vim-markdown-folding'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-repeat'
-Bundle 'Match-Bracket-for-Objective-C'
-Bundle 'edsono/vim-matchit'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-git'
-Bundle 'ervandew/supertab'
-Bundle 'vim-scripts/tComment'
-Bundle 'YankRing.vim'
-Bundle 'ragtag.vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
-Bundle 'garbas/vim-snipmate'
-Bundle 'vim-snipmate.git'
-Bundle 'css3'
-Bundle 'webgefrickel/typoscript-vim'
+Plugin 'gmarik/vundle'
+Plugin 'ack.vim'
+Plugin 'ctrlp.vim'
+Plugin 'Rip-Rip/clang_complete'
+Plugin 'AutoTag'
+Plugin 'a.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'knatten/vim_django'
+Plugin 'nelstrom/vim-markdown-folding'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-repeat'
+Plugin 'Match-Bracket-for-Objective-C'
+Plugin 'edsono/vim-matchit'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-git'
+Plugin 'ervandew/supertab'
+Plugin 'vim-scripts/tComment'
+Plugin 'YankRing.vim'
+Plugin 'ragtag.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'honza/vim-snippets'
+"Plugin 'garbas/vim-snipmate'
+Plugin 'vim-snipmate.git'
+Plugin 'css3'
+Plugin 'webgefrickel/typoscript-vim'
 
-filetype on
+call vundle#end()
 filetype plugin indent on
+
 syntax on
 
 set encoding=utf-8
@@ -57,7 +58,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 "ui
 set laststatus=2 "alwasy show status line
-set statusline=%<%f\ %h%m%r%y%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+"set statusline=%<%f\ %h%m%r%y%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set listchars=tab:▸\ ,eol:¬ "invisible chars
 set nolist "dont show invisible chars by default
 set noerrorbells visualbell t_vb=

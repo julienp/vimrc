@@ -63,6 +63,7 @@ autocmd GUIEnter * set visualbell t_vb=
 set showcmd "show command in the last line of the screen
 set wrap linebreak
 set showbreak=↪\  "show at the beginning of wrapped lines
+set cursorline
 
 "search
 set hlsearch " highlight the last searched term
@@ -222,7 +223,6 @@ if has('gui_running')
     " set guifont=Source\ Code\ Pro\:h12
     set guioptions="" " hide toolbars, menu
     set columns=110 "initial screensize
-    set cursorline "hightlight current line
     set fuopt=maxvert,maxhorz "set max size for fullscreen
 endif
 

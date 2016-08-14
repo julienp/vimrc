@@ -7,7 +7,6 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ack.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'AutoTag'
 Plugin 'Raimondi/delimitMate'
 Plugin 'nelstrom/vim-markdown-folding'
@@ -27,6 +26,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'mattn/emmet-vim'
 Plugin 'valloric/YouCompleteMe'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -137,7 +137,7 @@ runtime! ftplugin/man.vim
 nmap K :Man <cword><CR>
 
 "ctrlp
-let g:ctrlp_map = '<leader>t'
+let g:ctrlp_map = '<C-p>'
 let g:ctrlp_max_depth = 5
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
@@ -182,7 +182,6 @@ function SearchDash(lib)
 endfunction
 
 let mapleader = ","
-nnoremap <leader>b :CtrlPBuffer<CR>
 ",space to clear search
 nnoremap <leader><space> :noh<cr>
 ",W to remove all trailing whitespace
@@ -194,6 +193,7 @@ nnoremap <leader>n :set number! number?<cr>
 ",a to Ack the word under the cursor
 nnoremap <leader>a :Ack <cword><CR>
 nnoremap <leader>y :YRShow<CR>
+nnoremap <C-b> :CtrlPBuffer<CR>
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
@@ -229,4 +229,3 @@ if has('gui_running')
     set columns=110 "initial screensize
     set fuopt=maxvert,maxhorz "set max size for fullscreen
 endif
-

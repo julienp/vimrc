@@ -212,6 +212,8 @@ cmap w!! w !sudo tee % >/dev/null
 
 set background=dark
 colorscheme solarized
+" Remove gray background from gutter
+highlight clear SignColumn
 
 if has('gui_running')
     " set guifont=Menlo\ Regular:h12

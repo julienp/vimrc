@@ -208,6 +208,9 @@ nnoremap <leader>s :%s///g<left><left><left>
 nnoremap <leader>ro :call RopeOrganizeImports()<CR>
 nnoremap <leader>g :call RopeGotoDefinition()<CR>
 nnoremap <leader>d :Dash<CR>
+" tabs
+nnoremap <D-S-Left> :tabprevious<CR>
+nnoremap <D-S-Right> :tabnext<CR>
 
 cmap w!! w !sudo tee % >/dev/null
 

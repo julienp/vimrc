@@ -7,21 +7,17 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 Plugin 'ack.vim'
-Plugin 'ctrlp.vim'
-Plugin 'Rip-Rip/clang_complete'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'AutoTag'
-Plugin 'a.vim'
 Plugin 'Raimondi/delimitMate'
-Plugin 'knatten/vim_django'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-repeat'
-Plugin 'Match-Bracket-for-Objective-C'
 Plugin 'edsono/vim-matchit'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-git'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/tComment'
 Plugin 'YankRing.vim'
@@ -29,10 +25,11 @@ Plugin 'ragtag.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'honza/vim-snippets'
-"Plugin 'garbas/vim-snipmate'
-Plugin 'vim-snipmate.git'
 Plugin 'css3'
-Plugin 'webgefrickel/typoscript-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'scrooloose/syntastic.git'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -99,22 +96,41 @@ let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 
 "clang
-let g:clang_use_library=1
-let g:clang_complete_copen=1
-let g:clang_periodic_quickfix=1
-let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+" let g:clang_use_library=1
+" let g:clang_complete_copen=1
+" let g:clang_periodic_quickfix=1
+" let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 
-autocmd Filetype objc,c,objcpp call SuperTabSetDefaultCompletionType("<c-x><c-o>")
-autocmd BufWritePost *.c,*.m,*.h call g:ClangUpdateQuickFix()
-autocmd BufRead,BufNewFile *.m set filetype=objc
+" Enable jsx in .js files
+let g:jsx_ext_required = 0
 
-"typoscript
-autocmd BufNewFile,BufRead *.t3s,*.ts setlocal filetype=typoscript
+" Syntastic
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
+
+" autocmd Filetype objc,c,objcpp call SuperTabSetDefaultCompletionType("<c-x><c-o>")
+" autocmd BufWritePost *.c,*.m,*.h call g:ClangUpdateQuickFix()
+" autocmd BufRead,BufNewFile *.m set filetype=objc
+
+autocmd Filetype javascript.jsx set tabstop=2 shiftwidth=2
 
 "objc
 "https://github.com/b4winckler/vim-objc/blob/master/ftplugin/objc.vim
 "Search for include files inside frameworks (used for gf etc.)
-autocmd Filetype objc,objcpp setlocal includeexpr=substitute(v:fname,'\\([^/]\\+\\)/\\(.\\+\\)','/System/Library/Frameworks/\\1.framework/Headers/\\2','')
+" autocmd Filetype objc,objcpp setlocal includeexpr=substitute(v:fname,'\\([^/]\\+\\)/\\(.\\+\\)','/System/Library/Frameworks/\\1.framework/Headers/\\2','')
 
 "awesome manpages
 "see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude
@@ -125,10 +141,9 @@ nmap K :Man <cword><CR>
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_max_depth = 5
 let g:ctrlp_show_hidden = 1
-
-"a.vim
-let g:alternateExtensions_m = "h"
-let g:alternateExtensions_h = "m"
+let g:ctrlp_custom_ignore = {
+\ 'dir':  'node_modules',
+\}
 
 "TComment
 map <D-/> :TComment<cr>
@@ -196,14 +211,14 @@ nnoremap <leader>d :Dash<CR>
 
 cmap w!! w !sudo tee % >/dev/null
 
-set background=light
+set background=dark
+colorscheme solarized
 
 if has('gui_running')
-    colorscheme solarized
     " set guifont=Menlo\ Regular:h12
     " set guifont=Inconsolata-dz:h12
     " set guifont=Inconsolata\ for\ Powerline:h14
-    set guifont=Inconsolata:h14
+    set guifont=Inconsolata:h15
     " set guifont=Source\ Code\ Pro\:h12
     set guioptions="" " hide toolbars, menu
     set columns=110 "initial screensize

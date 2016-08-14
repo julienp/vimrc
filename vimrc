@@ -26,7 +26,7 @@ Plugin 'hail2u/vim-css3-syntax.git'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic.git'
-
+Plugin 'mattn/emmet-vim'
 
 call vundle#end()
 filetype plugin indent on

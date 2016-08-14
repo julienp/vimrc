@@ -18,7 +18,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-git'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/tComment'
 Plugin 'YankRing.vim'
 Plugin 'tpope/vim-ragtag'
@@ -27,6 +26,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic.git'
 Plugin 'mattn/emmet-vim'
+Plugin 'valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on

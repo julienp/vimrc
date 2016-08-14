@@ -55,7 +55,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 "ui
 set laststatus=2 "alwasy show status line
-"set statusline=%<%f\ %h%m%r%y%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%y%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set listchars=tab:▸\ ,eol:¬ "invisible chars
 set nolist "dont show invisible chars by default
 set noerrorbells visualbell t_vb=

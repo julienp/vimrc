@@ -98,6 +98,9 @@ set omnifunc=syntaxcomplete#Complete
 " Enable jsx in .js files
 let g:jsx_ext_required = 0
 
+" ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " Syntastic
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 1

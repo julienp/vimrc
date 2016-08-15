@@ -10,16 +10,17 @@ Plugin 'ack.vim'
 Plugin 'AutoTag'
 Plugin 'Raimondi/delimitMate'
 Plugin 'nelstrom/vim-markdown-folding'
+Plugin 'edsono/vim-matchit'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-repeat'
-Plugin 'edsono/vim-matchit'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-scripts/tComment'
 Plugin 'YankRing.vim'
-Plugin 'tpope/vim-ragtag'
 Plugin 'hail2u/vim-css3-syntax.git'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -27,6 +28,10 @@ Plugin 'scrooloose/syntastic.git'
 Plugin 'mattn/emmet-vim'
 Plugin 'valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -89,7 +94,6 @@ set completeopt=longest,menu
 set pumheight=15 "limit completion menu height
 
 set omnifunc=syntaxcomplete#Complete
-let g:SuperTabContextTextFileTypeExclusions = ['typoscript']
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 
@@ -119,6 +123,10 @@ highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
+
+" vim-ariline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " autocmd Filetype objc,c,objcpp call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 " autocmd BufWritePost *.c,*.m,*.h call g:ClangUpdateQuickFix()
@@ -222,8 +230,7 @@ highlight clear SignColumn
 if has('gui_running')
     " set guifont=Menlo\ Regular:h12
     " set guifont=Inconsolata-dz:h12
-    " set guifont=Inconsolata\ for\ Powerline:h14
-    set guifont=Inconsolata:h15
+    set guifont=Inconsolata\ for\ Powerline:h15
     " set guifont=Source\ Code\ Pro\:h12
     set guioptions="" " hide toolbars, menu
     set columns=110 "initial screensize

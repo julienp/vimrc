@@ -94,16 +94,7 @@ set wildignore=*.o,.DS_STORE,*.obj,*.pyc,*.class,_build,*.aux,*.bbl,*.blg,*/.git
 set wildmode=full
 set completeopt=longest,menu
 set pumheight=15 "limit completion menu height
-
 set omnifunc=syntaxcomplete#Complete
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
-
-"clang
-" let g:clang_use_library=1
-" let g:clang_complete_copen=1
-" let g:clang_periodic_quickfix=1
-" let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 
 " Enable jsx in .js files
 let g:jsx_ext_required = 0
@@ -135,11 +126,6 @@ let g:airline#extensions#tabline#enabled = 1
 " autocmd BufRead,BufNewFile *.m set filetype=objc
 
 autocmd Filetype javascript.jsx set tabstop=2 shiftwidth=2
-
-"objc
-"https://github.com/b4winckler/vim-objc/blob/master/ftplugin/objc.vim
-"Search for include files inside frameworks (used for gf etc.)
-" autocmd Filetype objc,objcpp setlocal includeexpr=substitute(v:fname,'\\([^/]\\+\\)/\\(.\\+\\)','/System/Library/Frameworks/\\1.framework/Headers/\\2','')
 
 "awesome manpages
 "see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude

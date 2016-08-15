@@ -18,7 +18,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'jwhitley/vim-colors-solarized'
 Plugin 'vim-scripts/tComment'
 Plugin 'YankRing.vim'
 Plugin 'hail2u/vim-css3-syntax.git'
@@ -224,8 +224,6 @@ cmap w!! w !sudo tee % >/dev/null
 
 set background=dark
 colorscheme solarized
-" Remove gray background from gutter
-highlight clear SignColumn
 
 if has('gui_running')
     cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'close' : 'q')<CR>

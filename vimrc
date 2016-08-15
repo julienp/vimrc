@@ -32,7 +32,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'ajh17/VimCompletesMe'
 
 

@@ -6,7 +6,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ack.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'AutoTag'
 Plugin 'Raimondi/delimitMate'
 Plugin 'nelstrom/vim-markdown-folding'

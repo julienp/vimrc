@@ -31,6 +31,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 
 call vundle#end()
@@ -198,6 +200,8 @@ nnoremap <leader>W :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <leader>i :set list!<CR>
 ",n to toggle linenumbers
 nnoremap <leader>n :set number! number?<cr>
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>j :NERDTreeFind<CR>
 ",a to Ack the word under the cursor
 nnoremap <leader>a :Ack <cword><CR>
 nnoremap <leader>y :YRShow<CR>

@@ -113,7 +113,7 @@ let g:syntastic_check_on_open = 0
 
 " vim-ariline
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1 " show buffers in tabline if there's only 1 tab
+" let g:airline#extensions#tabline#enabled = 1 " show buffers in tabline if there's only 1 tab
 let g:airline#extensions#hunks#enabled=0  " only show branch in git section
 let g:airline_symbols = {}
 let g:airline_symbols.maxlinenr = ''  " don't show the 3 horizontal bars after max line nr

@@ -228,6 +228,7 @@ colorscheme solarized
 highlight clear SignColumn
 
 if has('gui_running')
+    cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'close' : 'q')<CR>
     " set guifont=Menlo\ Regular:h12
     " set guifont=Inconsolata-dz:h12
     set guifont=Inconsolata\ for\ Powerline:h15

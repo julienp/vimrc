@@ -121,7 +121,7 @@ let g:airline_symbols.maxlinenr = ''  " don't show the 3 horizontal bars after m
 " autocmd BufWritePost *.c,*.m,*.h call g:ClangUpdateQuickFix()
 " autocmd BufRead,BufNewFile *.m set filetype=objc
 
-autocmd Filetype javascript.jsx set tabstop=2 shiftwidth=2
+autocmd Filetype javascript.jsx set tabstop=2 shiftwidth=2 softtabstop=2
 
 "awesome manpages
 "see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude

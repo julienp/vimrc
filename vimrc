@@ -133,8 +133,8 @@ let g:ctrlp_map = '<C-p>'
 let g:ctrlp_max_depth = 5
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
-\ 'dir':  'node_modules',
-\}
+            \ 'dir':  'node_modules',
+            \}
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 "TComment
@@ -143,7 +143,7 @@ map <D-/> :TComment<cr>
 "quickfix window minimum height 3, max 10, autoadjusts to number of errors
 au FileType qf call AdjustWindowHeight(3, 10)
 function! AdjustWindowHeight(minheight, maxheight)
-  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+    exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 au Filetype qf setlocal nolist nocursorline nowrap
 
@@ -168,9 +168,9 @@ au FileType html command! Dash call SearchDash('html:')
 au FileType css command! Dash call SearchDash('css:')
 map <leader>d :Dash<cr>
 function SearchDash(lib)
-  let s:url = "dash://".a:lib.expand("<cword>")
-  execute "silent ! /usr/bin/open ". s:url
-  redraw!
+    let s:url = "dash://".a:lib.expand("<cword>")
+    execute "silent ! /usr/bin/open ". s:url
+    redraw!
 endfunction
 
 let mapleader = ","

@@ -59,7 +59,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 "ui
 set laststatus=2 "alwasy show status line
-set statusline=%<%f\ %h%m%r%y%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set listchars=tab:▸\ ,eol:¬ "invisible chars
 set nolist "dont show invisible chars by default
 set noerrorbells visualbell t_vb=
@@ -106,16 +105,6 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_check_on_open = 0
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
-
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
 
 " vim-ariline
 let g:airline_powerline_fonts = 1

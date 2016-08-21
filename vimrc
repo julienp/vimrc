@@ -54,6 +54,7 @@ set undofile "persistent undo
 set undodir=/tmp
 set history=100 "keep 100 lines of history
 set viminfo='10,:20,\"100,n~/.viminfo
+set mouse=a " enable mouse in terminal
 "restore cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 

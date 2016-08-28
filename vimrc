@@ -33,6 +33,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ajh17/VimCompletesMe'
+Plugin 'sickill/vim-monokai'
 
 
 call vundle#end()
@@ -210,13 +211,13 @@ nnoremap <D-S-Right> :tabnext<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 set background=dark
-colorscheme solarized
+colorscheme monokai
 
 if has('gui_running')
     cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'close' : 'q')<CR>
-    " set guifont=Menlo\ Regular:h12
+    set guifont=Menlo\ Regular:h13
     " set guifont=Inconsolata-dz:h12
-    set guifont=Inconsolata\ for\ Powerline:h15
+    "set guifont=Inconsolata\ for\ Powerline:h15
     " set guifont=Source\ Code\ Pro\:h12
     set guioptions="" " hide toolbars, menu
     set columns=110 "initial screensize

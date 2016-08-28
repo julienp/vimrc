@@ -35,7 +35,6 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ajh17/VimCompletesMe'
 Plugin 'sickill/vim-monokai'
 
-
 call vundle#end()
 filetype plugin indent on
 
@@ -119,6 +118,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#hunks#enabled=0  " only show branch in git section
 let g:airline_symbols = {}
 let g:airline_symbols.maxlinenr = ''  " don't show the 3 horizontal bars after max line nr
+let g:airline_theme = 'distinguished'
 
 " autocmd Filetype objc,c,objcpp call SuperTabSetDefaultCompletionType("<c-x><c-o>")
 " autocmd BufWritePost *.c,*.m,*.h call g:ClangUpdateQuickFix()
@@ -216,9 +216,11 @@ colorscheme monokai
 
 if has('gui_running')
     cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'close' : 'q')<CR>
-    set guifont=Menlo\ Regular:h13
+    " set guifont=Menlo\ Regular:h13
+    set guifont=Menlo\ for\ Powerline:h13
+    " set guifont=Fira\ Mono\ for\ Powerline:h13
     " set guifont=Inconsolata-dz:h12
-    "set guifont=Inconsolata\ for\ Powerline:h15
+    " set guifont=Inconsolata\ for\ Powerline:h15
     " set guifont=Source\ Code\ Pro\:h12
     set guioptions="" " hide toolbars, menu
     set columns=110 "initial screensize

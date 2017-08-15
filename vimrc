@@ -31,11 +31,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ajh17/VimCompletesMe'
 Plugin 'sickill/vim-monokai'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'junegunn/vim-emoji'
 
@@ -183,8 +180,8 @@ nnoremap <leader>W :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <leader>i :set list!<CR>
 ",n to toggle linenumbers
 nnoremap <leader>n :set number! number?<cr>
-nnoremap <leader>t :NERDTreeTabsOpen<CR>
-nnoremap <leader>j :NERDTreeTabsFind<CR>
+" nnoremap <leader>t :NERDTreeTabsOpen<CR>
+" nnoremap <leader>j :NERDTreeTabsFind<CR>
 ",a to Ack the word under the cursor
 nnoremap <leader>a :Ack <cword><CR>
 nnoremap <leader>y :YRShow<CR>

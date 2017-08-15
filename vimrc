@@ -6,11 +6,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'sbdchd/neoformat'
+Plugin 'neomake/neomake'
+Plugin 'benjie/neomake-local-eslint.vim'
+Plugin 'elixir-lang/vim-elixir'
 Plugin 'mileszs/ack.vim'
-Plugin 'AutoTag'
 Plugin 'Raimondi/delimitMate'
 Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'edsono/vim-matchit'
+Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
@@ -23,7 +26,6 @@ Plugin 'YankRing.vim'
 Plugin 'hail2u/vim-css3-syntax.git'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'scrooloose/syntastic.git'
 Plugin 'mattn/emmet-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -33,7 +35,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ajh17/VimCompletesMe'
 Plugin 'sickill/vim-monokai'
-Plugin 'mtscout6/syntastic-local-eslint.vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'junegunn/vim-emoji'
@@ -105,16 +106,8 @@ let g:jsx_ext_required = 0
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-" Syntastic
-" let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_checkers = ['eslint', 'flow']
-" let g:syntastic_javascript_flow_exe = 'flow'
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_check_on_open = 0
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_open_list = 2
 
 " vim-ariline
 let g:airline_powerline_fonts = 0
@@ -129,6 +122,13 @@ let g:airline_theme = 'distinguished'
 " autocmd BufRead,BufNewFile *.m set filetype=objc
 
 autocmd Filetype javascript setlocal noexpandtab nosmartindent tabstop=2
+
+autocmd! BufWritePost * Neomake
+
+augroup fmt
+    autocmd!
+    autocmd BufWritePre *.js,*.jsx undojoin | Neoformat
+augroup END
 
 " Ocaml
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
@@ -203,7 +203,6 @@ nnoremap <C-k> :bn<cr>
 nnoremap <leader>s :%s///g<left><left><left>
 nnoremap <leader>ro :call RopeOrganizeImports()<CR>
 nnoremap <leader>g :call RopeGotoDefinition()<CR>
-nnoremap <leader>d :Dash<CR>
 " tabs
 nnoremap <D-S-Left> :tabprevious<CR>
 nnoremap <D-S-Right> :tabnext<CR>

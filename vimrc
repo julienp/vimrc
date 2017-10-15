@@ -6,13 +6,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'sbdchd/neoformat'
-Plugin 'neomake/neomake'
-Plugin 'benjie/neomake-local-eslint.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'mileszs/ack.vim'
 Plugin 'Raimondi/delimitMate'
-Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-repeat'
@@ -31,10 +27,10 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ajh17/VimCompletesMe'
 Plugin 'sickill/vim-monokai'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'junegunn/vim-emoji'
+Plugin 'vimwiki/vimwiki'
 
 call vundle#end()
 filetype plugin indent on
@@ -103,9 +99,6 @@ let g:jsx_ext_required = 0
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_open_list = 2
-
 " vim-ariline
 let g:airline_powerline_fonts = 0
 " let g:airline#extensions#tabline#enabled = 1 " show buffers in tabline if there's only 1 tab
@@ -118,19 +111,7 @@ let g:airline_theme = 'distinguished'
 " autocmd BufWritePost *.c,*.m,*.h call g:ClangUpdateQuickFix()
 " autocmd BufRead,BufNewFile *.m set filetype=objc
 
-autocmd Filetype javascript setlocal noexpandtab nosmartindent tabstop=2
-
-autocmd! BufWritePost * Neomake
-
-augroup fmt
-    autocmd!
-    autocmd BufWritePre *.js,*.jsx undojoin | Neoformat
-augroup END
-
-" Ocaml
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-set rtp^="/Users/j.poissonnier/.opam/system/share/ocp-indent/vim"
+autocmd Filetype javascript setlocal noexpandtab nosmartindent tabstop=4
 
 "awesome manpages
 "see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude
@@ -198,8 +179,6 @@ nnoremap <C-j> :bp<cr>
 nnoremap <C-k> :bn<cr>
 ",s for search/replace
 nnoremap <leader>s :%s///g<left><left><left>
-nnoremap <leader>ro :call RopeOrganizeImports()<CR>
-nnoremap <leader>g :call RopeGotoDefinition()<CR>
 " tabs
 nnoremap <D-S-Left> :tabprevious<CR>
 nnoremap <D-S-Right> :tabnext<CR>
@@ -212,9 +191,10 @@ colorscheme monokai
 if has('gui_running')
   cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'close' : 'q')<CR>
   " set guifont=Menlo\ Regular:h13
-  set guifont=Menlo\ for\ Powerline:h13
+  " set guifont=Menlo\ for\ Powerline:h13
   " set guifont=Fira\ Mono\ for\ Powerline:h13
-  set guifont=Inconsolata:h15
+  " set guifont=Inconsolata:h15
+  set guifont=Fira\ Mono:h14
   " set guifont=Inconsolata\ for\ Powerline:h15
   " set guifont=Source\ Code\ Pro\:h12
   set guioptions="" " hide toolbars, menu

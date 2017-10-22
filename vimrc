@@ -1,38 +1,32 @@
-set nocompatible " Use Vim defaults
+set nocompatible
 
-filetype off
+call plug#begin('~/.vim/plugged')
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'valloric/youcompleteme'
+Plug 'mileszs/ack.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'tmhedberg/matchit'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'qpkorr/vim-bufkill'
+Plug 'junegunn/vim-emoji'
+Plug 'joshdick/onedark.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'elixir-lang/vim-elixir'
+call plug#end()
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'mileszs/ack.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'tmhedberg/matchit'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-ragtag'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'vim-scripts/tComment'
-Plugin 'YankRing.vim'
-Plugin 'hail2u/vim-css3-syntax.git'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'mattn/emmet-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'sickill/vim-monokai'
-Plugin 'qpkorr/vim-bufkill'
-Plugin 'junegunn/vim-emoji'
-Plugin 'vimwiki/vimwiki'
-
-call vundle#end()
 filetype plugin indent on
 
 syntax on
@@ -51,12 +45,11 @@ set undofile "persistent undo
 set undodir=/tmp
 set history=100 "keep 100 lines of history
 set viminfo='10,:20,\"100,n~/.viminfo
-set mouse=a " enable mouse in terminal
+"set mouse=a " enable mouse in terminal
 "restore cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "ui
-set laststatus=2 "alwasy show status line
 set listchars=tab:▸\ ,eol:¬ "invisible chars
 set nolist "dont show invisible chars by default
 set noerrorbells visualbell t_vb=
@@ -80,55 +73,50 @@ set softtabstop=4
 set expandtab
 set shiftround
 
-"folding
-set nofoldenable "dont fold by default
-set foldmethod=indent
-set foldlevel=99
-
 "completion
 set wildmenu "command line completion
 set wildignore=*.o,.DS_STORE,*.obj,*.pyc,*.class,_build,*.aux,*.bbl,*.blg,*/.git/*,*/.svn/*,"ignore these files
 set wildmode=full
-set completeopt=longest,menu
 set pumheight=15 "limit completion menu height
-set omnifunc=syntaxcomplete#Complete
-
-" Enable jsx in .js files
-let g:jsx_ext_required = 0
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-" vim-ariline
+" vim-airline
 let g:airline_powerline_fonts = 0
-" let g:airline#extensions#tabline#enabled = 1 " show buffers in tabline if there's only 1 tab
 let g:airline#extensions#hunks#enabled=0  " only show branch in git section
 let g:airline_symbols = {}
 let g:airline_symbols.maxlinenr = ''  " don't show the 3 horizontal bars after max line nr
 let g:airline_theme = 'distinguished'
 
-" autocmd Filetype objc,c,objcpp call SuperTabSetDefaultCompletionType("<c-x><c-o>")
-" autocmd BufWritePost *.c,*.m,*.h call g:ClangUpdateQuickFix()
-" autocmd BufRead,BufNewFile *.m set filetype=objc
+" fzf
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Keyword'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
-autocmd Filetype javascript setlocal noexpandtab nosmartindent tabstop=4
+let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=node_modules --exclude=dist --exclude=.babelcache --exclude=.vscode'
+
+let g:ycm_python_binary_path = '/usr/bin/python3'
+
+let g:javascript_plugin_flow = 1
+
 
 "awesome manpages
 "see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude
 runtime! ftplugin/man.vim
 nmap K :Man <cword><CR>
-
-"ctrlp
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_max_depth = 5
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = {
-      \ 'dir':  'node_modules',
-      \}
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-"TComment
-map <D-/> :TComment<cr>
 
 "quickfix window minimum height 3, max 10, autoadjusts to number of errors
 au FileType qf call AdjustWindowHeight(3, 10)
@@ -139,6 +127,7 @@ au Filetype qf setlocal nolist nocursorline nowrap
 
 "yankring
 let g:yankring_history_dir = '/tmp'
+let g:yankring_replace_n_pkey = 'm' "rebind so it doesn't conflict with c-p
 
 function! <SID>StripTrailingWhitespaces()
   " Preparation: save last search, and cursor position.
@@ -167,7 +156,9 @@ nnoremap <leader>n :set number! number?<cr>
 nnoremap <leader>a :Ack <cword><CR>
 nnoremap <leader>y :YRShow<CR>
 nnoremap <leader>e :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
-nnoremap <C-b> :CtrlPBuffer<CR>
+nmap <C-p> :Files<CR>
+nmap <C-b> :Buffers<CR>
+nmap <C-T> :Tags<CR>
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
@@ -186,7 +177,7 @@ nnoremap <D-S-Right> :tabnext<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 set background=dark
-colorscheme monokai
+colorscheme onedark
 
 if has('gui_running')
   cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'close' : 'q')<CR>

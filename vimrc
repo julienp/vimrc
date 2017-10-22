@@ -22,6 +22,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'qpkorr/vim-bufkill'
 Plug 'junegunn/vim-emoji'
 Plug 'joshdick/onedark.vim'
+Plug 'w0rp/ale'
+Plug 'heavenshell/vim-prettier'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'elixir-lang/vim-elixir'
@@ -73,10 +75,14 @@ set softtabstop=4
 set expandtab
 set shiftround
 
+autocmd FileType python setlocal tabstop=4 noexpandtab
+autocmd FileType javascript,javascript.jsx setlocal tabstop=4 noexpandtab
+
 "completion
 set wildmenu "command line completion
 set wildignore=*.o,.DS_STORE,*.obj,*.pyc,*.class,_build,*.aux,*.bbl,*.blg,*/.git/*,*/.svn/*,"ignore these files
 set wildmode=full
+set completeopt-=preview
 set pumheight=15 "limit completion menu height
 
 " ack.vim
@@ -108,9 +114,19 @@ let g:fzf_colors =
 
 let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=node_modules --exclude=dist --exclude=.babelcache --exclude=.vscode'
 
-let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
 
 let g:javascript_plugin_flow = 1
+
+" let g:ale_fixers = {}
+" let g:ale_fixers['javascript'] = ['prettier']
+" let g:ale_fix_on_save = 1
+" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --use-tabs --print-width 120 --no-semi'
+let g:ale_sign_column_always = 1
+let g:ale_lint_delay = 200
+" let g:ale_open_list = 1
+
+autocmd BufWritePost *.js,*.jsx call prettier#run(1)
 
 
 "awesome manpages
@@ -159,6 +175,8 @@ nnoremap <leader>e :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
 nmap <C-p> :Files<CR>
 nmap <C-b> :Buffers<CR>
 nmap <C-T> :Tags<CR>
+nmap <C-L> :BCommits<CR>
+nmap <leader>g :YcmCompleter GoTo<CR>
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>

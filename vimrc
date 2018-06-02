@@ -1,9 +1,6 @@
 set nocompatible
 
 call plug#begin('~/.vim/plugged')
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'valloric/youcompleteme'
 Plug 'mileszs/ack.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'tmhedberg/matchit'
@@ -17,16 +14,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'qpkorr/vim-bufkill'
 Plug 'junegunn/vim-emoji'
 Plug 'joshdick/onedark.vim'
-Plug 'w0rp/ale'
-Plug 'heavenshell/vim-prettier'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'elixir-lang/vim-elixir'
 call plug#end()
 
 filetype plugin indent on
@@ -77,6 +67,8 @@ set shiftround
 
 autocmd FileType python setlocal tabstop=4 noexpandtab
 autocmd FileType javascript,javascript.jsx setlocal tabstop=4 noexpandtab
+autocmd FileType javascript,javascript.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
 
 "completion
 set wildmenu "command line completion
@@ -87,47 +79,6 @@ set pumheight=15 "limit completion menu height
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" vim-airline
-let g:airline_powerline_fonts = 0
-let g:airline#extensions#hunks#enabled=0  " only show branch in git section
-let g:airline_symbols = {}
-let g:airline_symbols.maxlinenr = ''  " don't show the 3 horizontal bars after max line nr
-let g:airline_theme = 'distinguished'
-
-" fzf
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Keyword'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
-let g:fzf_tags_command = 'ctags -R --exclude=.git --exclude=node_modules --exclude=dist --exclude=.babelcache --exclude=.vscode'
-
-let g:ycm_python_binary_path = '/usr/local/bin/python3'
-
-let g:javascript_plugin_flow = 1
-
-" let g:ale_fixers = {}
-" let g:ale_fixers['javascript'] = ['prettier']
-" let g:ale_fix_on_save = 1
-" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --use-tabs --print-width 120 --no-semi'
-let g:ale_sign_column_always = 1
-let g:ale_lint_delay = 200
-" let g:ale_open_list = 1
-
-autocmd BufWritePost *.js,*.jsx call prettier#run(1)
-
 
 "awesome manpages
 "see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude
@@ -172,11 +123,6 @@ nnoremap <leader>n :set number! number?<cr>
 nnoremap <leader>a :Ack <cword><CR>
 nnoremap <leader>y :YRShow<CR>
 nnoremap <leader>e :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>
-nmap <C-p> :Files<CR>
-nmap <C-b> :Buffers<CR>
-nmap <C-T> :Tags<CR>
-nmap <C-L> :BCommits<CR>
-nmap <leader>g :YcmCompleter GoTo<CR>
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>

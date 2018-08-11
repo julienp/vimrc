@@ -17,6 +17,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'qpkorr/vim-bufkill'
 Plug 'junegunn/vim-emoji'
 Plug 'joshdick/onedark.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'prettier/vim-prettier', {
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+Plug 'w0rp/ale'
 call plug#end()
 
 filetype plugin indent on
@@ -37,6 +41,7 @@ set undofile "persistent undo
 set undodir=/tmp
 set history=100 "keep 100 lines of history
 set viminfo='10,:20,\"100,n~/.viminfo
+set laststatus=2
 "set mouse=a " enable mouse in terminal
 "restore cursor position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -72,10 +77,33 @@ autocmd FileType javascript,javascript.jsx setlocal tabstop=2 shiftwidth=2 softt
 
 "completion
 set wildmenu "command line completion
-set wildignore=*.o,.DS_STORE,*.obj,*.pyc,*.class,_build,*.aux,*.bbl,*.blg,*/.git/*,*/.svn/*,"ignore these files
+set wildignore=*.o,.DS_STORE,*.obj,*.pyc,*.class,_build,*.aux,*.bbl,*.blg,*/.git/*,*/.svn/*,*/node_modules/*
 set wildmode=full
 set completeopt-=preview
 set pumheight=15 "limit completion menu height
+
+" Add entries from .gitignore to wildignore
+let filename = '.gitignore'
+if filereadable(filename)
+    let igstring = ''
+    for oline in readfile(filename)
+        let line = substitute(oline, '\s|\n|\r', '', "g")
+        if line =~ '^#' | con | endif
+        if line == '' | con  | endif
+        if line =~ '^!' | con  | endif
+        if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
+        let igstring .= "," . line
+    endfor
+    let execstring = "set wildignore=".substitute(igstring, '^,', '', "g")
+    execute execstring
+endif
+
+" statusline
+set statusline=%t " filename
+set statusline+=%= " spacer
+set statusline+=%y " filetype
+set statusline+=\ (%l,%c) "(line, column)
+
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -95,6 +123,21 @@ au Filetype qf setlocal nolist nocursorline nowrap
 "yankring
 let g:yankring_history_dir = '/tmp'
 let g:yankring_replace_n_pkey = 'm' "rebind so it doesn't conflict with c-p
+
+"ctrlp
+nnoremap <C-b> :CtrlPBuffer<cr>
+
+"prettier-vim
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+"ale
+let g:ale_fixers = {
+\   'javascript': ['yarn eslint'],
+\}
+let g:ale_open_list = 1
+let g:ale_completion_enabled = 1
+
 
 function! <SID>StripTrailingWhitespaces()
   " Preparation: save last search, and cursor position.
@@ -119,6 +162,8 @@ nnoremap <leader>i :set list!<CR>
 nnoremap <leader>n :set number! number?<cr>
 " nnoremap <leader>t :NERDTreeTabsOpen<CR>
 " nnoremap <leader>j :NERDTreeTabsFind<CR>
+" Ale
+nnoremap <C-b> :ALEGoToDefinition<cr>
 ",a to Ack the word under the cursor
 nnoremap <leader>a :Ack <cword><CR>
 nnoremap <leader>y :YRShow<CR>
@@ -139,6 +184,7 @@ nnoremap <D-S-Left> :tabprevious<CR>
 nnoremap <D-S-Right> :tabnext<CR>
 
 cmap w!! w !sudo tee % >/dev/null
+
 
 set background=dark
 colorscheme onedark

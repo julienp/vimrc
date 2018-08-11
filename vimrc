@@ -41,6 +41,7 @@ set undofile "persistent undo
 set undodir=/tmp
 set history=100 "keep 100 lines of history
 set viminfo='10,:20,\"100,n~/.viminfo
+set signcolumn=yes " always show the gutter
 set laststatus=2
 "set mouse=a " enable mouse in terminal
 "restore cursor position
@@ -55,6 +56,7 @@ set showcmd "show command in the last line of the screen
 set wrap linebreak
 set showbreak=↪\  "show at the beginning of wrapped lines
 set cursorline
+set updatetime=200 " write swap file after 200ms, required for gitgutter to update quickly
 
 "search
 set hlsearch " highlight the last searched term
@@ -126,6 +128,18 @@ let g:yankring_replace_n_pkey = 'm' "rebind so it doesn't conflict with c-p
 
 "ctrlp
 nnoremap <C-b> :CtrlPBuffer<cr>
+let g:ctrlp_buffer_func = {
+    \ 'enter': 'Function_Name_1',
+    \ 'exit':  'Function_Name_2',
+    \ }
+
+func! Function_Name_1()
+    set laststatus=0
+endfunc
+
+func! Function_Name_2()
+    set laststatus=2
+endfunc
 
 "prettier-vim
 let g:prettier#autoformat = 0
@@ -136,7 +150,8 @@ let g:ale_fixers = {
 \   'javascript': ['yarn eslint'],
 \}
 let g:ale_open_list = 1
-let g:ale_completion_enabled = 1
+let g:ale_keep_list_window_open = 1
+" let g:ale_completion_enabled = 1 " This causes vim to freeze https://github.com/w0rp/ale/issues/1800
 
 
 function! <SID>StripTrailingWhitespaces()
@@ -162,8 +177,6 @@ nnoremap <leader>i :set list!<CR>
 nnoremap <leader>n :set number! number?<cr>
 " nnoremap <leader>t :NERDTreeTabsOpen<CR>
 " nnoremap <leader>j :NERDTreeTabsFind<CR>
-" Ale
-nnoremap <C-b> :ALEGoToDefinition<cr>
 ",a to Ack the word under the cursor
 nnoremap <leader>a :Ack <cword><CR>
 nnoremap <leader>y :YRShow<CR>
@@ -191,14 +204,13 @@ colorscheme onedark
 
 if has('gui_running')
   cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'close' : 'q')<CR>
-  " set guifont=Menlo\ Regular:h13
-  " set guifont=Menlo\ for\ Powerline:h13
-  " set guifont=Fira\ Mono\ for\ Powerline:h13
-  " set guifont=Inconsolata:h15
   set guifont=Fira\ Mono:h14
-  " set guifont=Inconsolata\ for\ Powerline:h15
-  " set guifont=Source\ Code\ Pro\:h12
   set guioptions="" " hide toolbars, menu
   set columns=110 "initial screensize
   set fuopt=maxvert,maxhorz "set max size for fullscreen
+  hi StatusLine guibg=#af5fff guifg=#eeeeee
+else
+  hi Normal ctermbg=none
+  hi StatusLine ctermbg=135 ctermfg=white
+  hi CursorLine ctermbg=234 cterm=none
 endif

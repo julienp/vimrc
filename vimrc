@@ -112,7 +112,9 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 
 " ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 "awesome manpages
 "see note [1] at http://crumbtrail.chesmart.in/post/5024677985/man-vim-dude

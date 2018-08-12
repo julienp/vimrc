@@ -106,6 +106,9 @@ set statusline+=%= " spacer
 set statusline+=%y " filetype
 set statusline+=\ (%l,%c) "(line, column)
 
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'

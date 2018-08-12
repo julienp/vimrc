@@ -102,6 +102,7 @@ endif
 
 " statusline
 set statusline=%t " filename
+set statusline+=\ %{FugitiveStatusline()}
 set statusline+=%= " spacer
 set statusline+=%y " filetype
 set statusline+=\ (%l,%c) "(line, column)
